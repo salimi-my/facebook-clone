@@ -1,7 +1,7 @@
 import { getProviders, signIn } from 'next-auth/react';
 import Head from 'next/head';
 
-function signin({ providers }) {
+function Login({ providers }) {
   return (
     <>
       <Head>
@@ -109,7 +109,7 @@ function signin({ providers }) {
   );
 }
 
-export default signin;
+export default Login;
 
 export async function getServerSideProps() {
   const providers = await getProviders();

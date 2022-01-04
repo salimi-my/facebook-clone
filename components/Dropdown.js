@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import {
-  ChatAlt2Icon,
   ChatAltIcon,
   ChevronDownIcon,
   CogIcon,
