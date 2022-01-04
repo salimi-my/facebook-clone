@@ -17,7 +17,7 @@ function signin({ providers }) {
                 </h1>
                 <p className='leading-relaxed mt-4 lg:text-3xl text-xl lg:max-w-xl font-normal text-black text-center md:text-left'>
                   Facebook helps you connect and share with the people in your
-                  life.
+                  life. This is not facebook.
                 </p>
               </div>
               <div className='lg:w-2/6 md:w-1/2 bg-white shadow-lg rounded-lg p-5 flex flex-col md:ml-auto w-full mt-10 md:mt-0'>
