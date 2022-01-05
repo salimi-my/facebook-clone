@@ -7,8 +7,10 @@ export default NextAuth({
     FacebookProvider({
       clientId: process.env.FACEBOOK_CLIENT_ID,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-      profileUrl:
-        'https://graph.facebook.com/me?fields=id,email,name,first_name,last_name,picture',
+      userinfo: {
+        url: 'https://graph.facebook.com/me',
+        params: { fields: 'id,name,first_name,last_name,email,picture' }
+      },
       profile: (profile) => {
         return {
           id: profile.id,
