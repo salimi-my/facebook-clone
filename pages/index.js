@@ -7,8 +7,13 @@ import RightSidebar from '../components/right-sidebar/RightSidebar';
 import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 import { Fragment } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Home({ session, posts }) {
+  const router = useRouter();
+  if (router.asPath === '/#_=_') {
+    window.history.pushState('', document.title, window.location.pathname);
+  }
   return (
     <Fragment>
       <Head>
