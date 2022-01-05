@@ -5,7 +5,8 @@ function Login({ providers }) {
   return (
     <>
       <Head>
-        <title>Facebook Login</title>
+        <title>Facebook Clone | Login</title>
+        <link rel='shortcut icon' href='/favicon.ico' />
       </Head>
       <div>
         <div>

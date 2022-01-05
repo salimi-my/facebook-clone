@@ -12,7 +12,8 @@ export default function Home({ session, posts }) {
   return (
     <Fragment>
       <Head>
-        <title>Facebook</title>
+        <title>Facebook Clone</title>
+        <link rel='shortcut icon' href='/favicon.ico' />
       </Head>
       <Header />
       <LeftSidebar />
