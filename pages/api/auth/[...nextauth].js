@@ -11,7 +11,7 @@ export default NextAuth({
         url: 'https://graph.facebook.com/me',
         params: { fields: 'id,name,first_name,last_name,email,picture' }
       },
-      profile: (profile) => {
+      profile(profile) {
         return {
           id: profile.id,
           name: profile.name,
