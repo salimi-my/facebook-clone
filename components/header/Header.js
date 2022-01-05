@@ -51,7 +51,7 @@ function Header() {
             layout='fixed'
           />
           <p className='whitespace-nowrap font-semibold pr-2'>
-            {session.user.first_name}
+            {session.user.firstName}
           </p>
         </div>
         <PlusSmIcon className='icon xl:hidden' />
