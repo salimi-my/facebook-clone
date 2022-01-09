@@ -19,12 +19,30 @@ export default function Home({ posts }) {
   return (
     <Fragment>
       <Head>
-        <title>Not Facecook</title>
-        <meta name='title' content='Not Facecook | Login' />
+        <title>Fakebook</title>
+        <meta name='title' content='Fakebook' />
         <meta
           name='description'
           content='This is NOT REAL FACEBOOK! This site created for educational purposes only.'
         />
+
+        <meta property='og:type' content='website' />
+        <meta property='og:url' content='https://fakebook.salimi.my/' />
+        <meta property='og:title' content='Fakebook' />
+        <meta
+          property='og:description'
+          content='This is NOT REAL FACEBOOK! This site created for educational purposes only.'
+        />
+        <meta property='og:image' content='/fakebook.jpg' />
+
+        <meta property='twitter:card' content='summary_large_image' />
+        <meta property='twitter:url' content='https://fakebook.salimi.my/' />
+        <meta property='twitter:title' content='Fakebook' />
+        <meta
+          property='twitter:description'
+          content='This is NOT REAL FACEBOOK! This site created for educational purposes only.'
+        />
+        <meta property='twitter:image' content='/fakebook.jpg' />
         <meta name='robots' content='noindex, nofollow' />
         <link rel='shortcut icon' href='/favicon.ico' />
       </Head>

@@ -9,12 +9,30 @@ function Login({ providers }) {
   return (
     <>
       <Head>
-        <title>Not Facecook | Login</title>
-        <meta name='title' content='Not Facecook | Login' />
+        <title>Fakebook | Login</title>
+        <meta name='title' content='Fakebook | Login' />
         <meta
           name='description'
           content='This is NOT REAL FACEBOOK! This site created for educational purposes only.'
         />
+
+        <meta property='og:type' content='website' />
+        <meta property='og:url' content='https://fakebook.salimi.my/' />
+        <meta property='og:title' content='Fakebook | Login' />
+        <meta
+          property='og:description'
+          content='This is NOT REAL FACEBOOK! This site created for educational purposes only.'
+        />
+        <meta property='og:image' content='/fakebook.jpg' />
+
+        <meta property='twitter:card' content='summary_large_image' />
+        <meta property='twitter:url' content='https://fakebook.salimi.my/' />
+        <meta property='twitter:title' content='Fakebook | Login' />
+        <meta
+          property='twitter:description'
+          content='This is NOT REAL FACEBOOK! This site created for educational purposes only.'
+        />
+        <meta property='twitter:image' content='/fakebook.jpg' />
         <meta name='robots' content='noindex, nofollow' />
         <link rel='shortcut icon' href='/favicon.ico' />
       </Head>
@@ -24,7 +42,7 @@ function Login({ providers }) {
             <div className='container xl:px-32 px-5 py-36 mx-auto flex flex-wrap items-center'>
               <div className='lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0 -mt-10'>
                 <h1 className='title-font font-bold lg:text-6xl text-6xl text-blue-600 text-center md:text-left '>
-                  not facebook
+                  fakebook
                 </h1>
                 <p className='leading-relaxed mt-4 lg:text-3xl text-xl lg:max-w-xl font-normal text-black text-center md:text-left'>
                   This is not real Facebook and it cannot connect with real
