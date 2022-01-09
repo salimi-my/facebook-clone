@@ -1,58 +1,73 @@
 import StoryCard from './StoryCard';
 import useWindowSize from '../../hooks/use-window-size';
+import { useSession } from 'next-auth/react';
+import { ArrowRightIcon } from '@heroicons/react/outline';
 
 const stories = [
   {
-    name: 'Sonny Sangha',
-    src: 'https://links.papareact.com/zof',
-    profile: 'https://links.papareact.com/l4v'
-  },
-  {
+    id: 's1',
     name: 'Elon Musk',
-    src: 'https://links.papareact.com/4zn',
-    profile: 'https://links.papareact.com/kxk'
+    profile: 'https://links.salimi.my/elonmuskprofile',
+    story: 'https://links.salimi.my/elonmuskstory'
   },
   {
-    name: 'Jeff Bezoz',
-    src: 'https://links.papareact.com/k2j',
-    profile: 'https://links.papareact.com/f0p'
+    id: 's2',
+    name: 'Jack Ma',
+    profile: 'https://links.salimi.my/jackmaprofile',
+    story: 'https://links.salimi.my/jackmastory'
   },
   {
-    name: 'Mark Zuckerberg',
-    src: 'https://links.papareact.com/xql',
-    profile: 'https://links.papareact.com/snf'
-  },
-  {
+    id: 's4',
     name: 'Bill Gates',
-    src: 'https://links.papareact.com/4u4',
-    profile: 'https://links.papareact.com/zvy'
+    profile: 'https://links.salimi.my/billgatesprofile',
+    story: 'https://links.salimi.my/billgatesstory'
+  },
+  {
+    id: 's3',
+    name: 'Mark Zuckerberg',
+    profile: 'https://links.salimi.my/markzuckerbergprofile',
+    story: 'https://links.salimi.my/markzuckerbergstory'
   }
 ];
 
 function Stories() {
   const [width] = useWindowSize();
+  const { data: session } = useSession();
   return (
-    <div className='flex justify-center space-x-3 mx-auto'>
+    <div className='flex relative justify-center space-x-3 mx-auto items-center'>
+      <StoryCard
+        user={true}
+        key={session.user.email}
+        name={session.user.name}
+        profile={session.user.image}
+        story={session.user.image}
+      />
       {width > 767 &&
-        stories.map((story) => (
-          <StoryCard
-            key={story.src}
-            name={story.name}
-            src={story.src}
-            profile={story.profile}
-          />
-        ))}
-      {width < 768 &&
         stories
           .slice(0, 4)
           .map((story) => (
             <StoryCard
-              key={story.src}
+              user={false}
+              key={story.id}
               name={story.name}
-              src={story.src}
               profile={story.profile}
+              story={story.story}
             />
           ))}
+      {width < 768 &&
+        stories
+          .slice(0, 3)
+          .map((story) => (
+            <StoryCard
+              key={story.id}
+              name={story.name}
+              profile={story.profile}
+              story={story.story}
+            />
+          ))}
+      <div className='absolute -right-5 bg-white rounded-full p-[0.6rem] border shadow-md text-gray-700 hover:bg-gray-200 cursor-pointer'>
+        <ArrowRightIcon className='h-5' />
+      </div>
     </div>
   );
 }

@@ -2,7 +2,6 @@ import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import {
   ChatAltIcon,
-  ChevronDownIcon,
   CogIcon,
   MoonIcon,
   QuestionMarkCircleIcon
@@ -20,8 +19,14 @@ export default function Dropdown() {
   return (
     <Menu as='div' className='relative inline-block text-left'>
       <div>
-        <Menu.Button className='inline-flex justify-center w-full rounded-full px-2 bg-gray-200 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300'>
-          <ChevronDownIcon className='h-6' aria-hidden='true' />
+        <Menu.Button className='inline-flex justify-center w-full rounded-full p-[0.6rem] bg-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-300'>
+          <Image
+            className='h-5 filter'
+            src='/down.svg'
+            width={20}
+            height={20}
+            alt=''
+          />
         </Menu.Button>
       </div>
 
@@ -51,6 +56,7 @@ export default function Dropdown() {
                     width='60'
                     height='60'
                     layout='fixed'
+                    alt=''
                   />
                   <div className='pl-4 flex-col'>
                     <h2 className='text-lg font-semibold leading-6'>
@@ -74,7 +80,7 @@ export default function Dropdown() {
                   )}
                 >
                   <div className='flex items-center'>
-                    <ChatAltIcon className='inline-flex p-2 h-10 w-10 bg-gray-200 rounded-full text-gray-700' />
+                    <ChatAltIcon className='inline-flex p-2 h-10 w-10 bg-gray-200 rounded-full text-gray-900' />
                     <div className='pl-4 flex-col'>
                       <h2 className='text-base font-semibold leading-6'>
                         Give feedback
@@ -98,7 +104,7 @@ export default function Dropdown() {
                   )}
                 >
                   <div className='flex items-center'>
-                    <CogIcon className='inline-flex p-2 h-10 w-10 bg-gray-200 rounded-full text-gray-700' />
+                    <CogIcon className='inline-flex p-2 h-10 w-10 bg-gray-200 rounded-full text-gray-900' />
                     <div className='pl-4 flex'>
                       <h2 className='text-base font-semibold leading-6'>
                         Settings & privacy
@@ -119,7 +125,7 @@ export default function Dropdown() {
                   )}
                 >
                   <div className='flex items-center'>
-                    <QuestionMarkCircleIcon className='inline-flex p-2 h-10 w-10 bg-gray-200 rounded-full text-gray-700' />
+                    <QuestionMarkCircleIcon className='inline-flex p-2 h-10 w-10 bg-gray-200 rounded-full text-gray-900' />
                     <div className='pl-4 flex'>
                       <h2 className='text-base font-semibold leading-6'>
                         Help & Support
@@ -140,7 +146,7 @@ export default function Dropdown() {
                   )}
                 >
                   <div className='flex items-center'>
-                    <MoonIcon className='inline-flex p-2 h-10 w-10 bg-gray-200 rounded-full text-gray-700' />
+                    <MoonIcon className='inline-flex p-2 h-10 w-10 bg-gray-200 rounded-full text-gray-900' />
                     <div className='pl-4 flex'>
                       <h2 className='text-base font-semibold leading-6'>
                         Display & Accessibility
@@ -167,7 +173,7 @@ export default function Dropdown() {
                   }}
                 >
                   <div className='flex items-center'>
-                    <LogoutIcon className='inline-flex p-2 h-10 w-10 bg-gray-200 rounded-full text-gray-700' />
+                    <LogoutIcon className='inline-flex p-2 h-10 w-10 bg-gray-200 rounded-full text-gray-900' />
                     <div className='pl-4 flex'>
                       <h2 className='text-base font-semibold leading-6'>
                         Log Out

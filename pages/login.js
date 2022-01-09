@@ -1,11 +1,18 @@
 import { getProviders, signIn } from 'next-auth/react';
 import Head from 'next/head';
+import DisclaimerModal from '../components/modal/DisclaimerModal';
 
 function Login({ providers }) {
   return (
     <>
       <Head>
-        <title>Facebook Clone | Login</title>
+        <title>Not Facecook | Login</title>
+        <meta name='title' content='Not Facecook | Login' />
+        <meta
+          name='description'
+          content='This is NOT REAL FACEBOOK! This site created for educational purposes only.'
+        />
+        <meta name='robots' content='noindex, nofollow' />
         <link rel='shortcut icon' href='/favicon.ico' />
       </Head>
       <div>
@@ -14,20 +21,20 @@ function Login({ providers }) {
             <div className='container xl:px-32 px-5 py-36 mx-auto flex flex-wrap items-center'>
               <div className='lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0 -mt-10'>
                 <h1 className='title-font font-bold lg:text-6xl text-6xl text-blue-600 text-center md:text-left '>
-                  facebook
+                  not facebook
                 </h1>
                 <p className='leading-relaxed mt-4 lg:text-3xl text-xl lg:max-w-xl font-normal text-black text-center md:text-left'>
-                  Facebook helps you connect and share with the people in your
-                  life.
+                  This is not real Facebook and it cannot connect with real
+                  people.
                 </p>
               </div>
               <div className='lg:w-2/6 md:w-1/2 bg-white shadow-lg rounded-lg p-5 flex flex-col md:ml-auto w-full mt-10 md:mt-0'>
                 <div className='relative mb-4'>
                   <input
-                    type='text'
-                    name='full-name'
+                    type='email'
+                    name='email'
                     placeholder='Email address or phone number'
-                    className='w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 
+                    className='w-full bg-white rounded-md border border-gray-300 focus:border-indigo-500 focus:ring-2 
                     focus:ring-indigo-200 text-lg outline-none  text-gray-700 py-1 px-3 leading-8 transition-colors 
                     duration-200 ease-in-out disabled:cursor-not-allowed'
                     disabled
@@ -35,10 +42,10 @@ function Login({ providers }) {
                 </div>
                 <div className='relative mb-4'>
                   <input
-                    type='email'
-                    name='email'
+                    type='password'
+                    name='password'
                     placeholder='Password'
-                    className='w-full  bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 
+                    className='w-full  bg-white rounded-md border border-gray-300 focus:border-indigo-500 focus:ring-2 
                     focus:ring-indigo-200  outline-none text-lg text-gray-700 py-1 px-3 leading-8 transition-colors 
                     duration-200 ease-in-out disabled:cursor-not-allowed'
                     disabled
@@ -47,7 +54,7 @@ function Login({ providers }) {
                 {Object.values(providers).map((provider) => (
                   <div key={provider.name}>
                     <button
-                      className='w-full text-white border-0 py-2 px-8 focus:outline-none font-medium rounded text-xl 
+                      className='w-full text-white border-0 py-2 px-8 focus:outline-none font-medium rounded-md text-xl 
                       bg-blue-600 hover:bg-blue-700'
                       onClick={() => signIn(provider.id, { callbackUrl: '/' })}
                     >
@@ -64,8 +71,8 @@ function Login({ providers }) {
                 <hr className='my-5 mt-2' />
                 <div className='flex justify-center py-2'>
                   <button
-                    className='text-white border-0 py-2 px-4 focus:outline-none font-medium rounded text-xl 
-                  bg-green-500 hover:bg-green-600 cursor-not-allowed'
+                    className='flex items-center justify-center text-white border-0 py-[0.55rem] px-4 focus:outline-none font-medium rounded-md text-lg 
+                  bg-[#42b72a] hover:bg-[#359b21] cursor-not-allowed'
                   >
                     Create New Account
                   </button>
@@ -91,8 +98,8 @@ function Login({ providers }) {
           <hr className='my-2 border-t border-gray-300' />
           <p className='text-sm text-gray-500'>
             Disclaimer: This site is not the real Facebook. Under no
-            circumstance shall we have any liability to you for any loss or
-            damage of any kind incurred as a result of the use of the siteor
+            circumstance shall I have any liability to you for any loss or
+            damage of any kind incurred as a result of the use of the site or
             reliance on any information provided on the site. Your use of the
             site and your reliance on any information on the site is solely at
             your own risk.
@@ -106,6 +113,7 @@ function Login({ providers }) {
           </div>
         </div>
       </div>
+      <DisclaimerModal />
     </>
   );
 }

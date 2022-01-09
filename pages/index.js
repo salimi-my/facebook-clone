@@ -8,24 +8,33 @@ import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 import { Fragment } from 'react';
 import { useRouter } from 'next/router';
+import InputModal from '../components/modal/InputModal';
 
-export default function Home({ session, posts }) {
+export default function Home({ posts }) {
   const router = useRouter();
   if (router.asPath === '/#_=_') {
     window.history.pushState('', document.title, window.location.pathname);
   }
+
   return (
     <Fragment>
       <Head>
-        <title>Facebook Clone</title>
+        <title>Not Facecook</title>
+        <meta name='title' content='Not Facecook | Login' />
+        <meta
+          name='description'
+          content='This is NOT REAL FACEBOOK! This site created for educational purposes only.'
+        />
+        <meta name='robots' content='noindex, nofollow' />
         <link rel='shortcut icon' href='/favicon.ico' />
       </Head>
       <Header />
       <LeftSidebar />
-      <main className='bg-gray-100 overflow-y-auto feed'>
+      <main className='bg-gray-100 overflow-y-auto'>
         <Feed posts={posts} />
       </main>
       <RightSidebar />
+      <InputModal />
     </Fragment>
   );
 }
