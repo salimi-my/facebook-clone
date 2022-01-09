@@ -1,6 +1,6 @@
 import { getProviders, signIn } from 'next-auth/react';
 import Head from 'next/head';
-import { useState } from 'react/cjs/react.development';
+import { useState } from 'react';
 import DisclaimerModal from '../components/modal/DisclaimerModal';
 
 function Login({ providers }) {
