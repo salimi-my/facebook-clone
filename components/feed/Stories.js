@@ -31,7 +31,7 @@ const stories = [
 ];
 
 function Stories() {
-  const [width] = useWindowSize();
+  const windowSize = useWindowSize();
   const { data: session } = useSession();
   return (
     <div className='flex relative justify-center space-x-3 mx-auto items-center'>
@@ -42,31 +42,31 @@ function Stories() {
         profile={session.user.image}
         story={session.user.image}
       />
-      {width > 767 &&
-        stories
-          .slice(0, 4)
-          .map((story) => (
-            <StoryCard
-              user={false}
-              key={story.id}
-              name={story.name}
-              profile={story.profile}
-              story={story.story}
-            />
-          ))}
-      {width < 768 &&
-        stories
-          .slice(0, 3)
-          .map((story) => (
-            <StoryCard
-              key={story.id}
-              name={story.name}
-              profile={story.profile}
-              story={story.story}
-            />
-          ))}
-      <div className='absolute -right-5 bg-white rounded-full p-[0.6rem] border shadow-md text-gray-700 hover:bg-gray-200 cursor-pointer'>
-        <ArrowRightIcon className='h-5' />
+      {windowSize > 767
+        ? stories
+            .slice(0, 4)
+            .map((story) => (
+              <StoryCard
+                user={false}
+                key={story.id}
+                name={story.name}
+                profile={story.profile}
+                story={story.story}
+              />
+            ))
+        : stories
+            .slice(0, 3)
+            .map((story) => (
+              <StoryCard
+                user={false}
+                key={story.id}
+                name={story.name}
+                profile={story.profile}
+                story={story.story}
+              />
+            ))}
+      <div className='absolute -right-4 md:-right-5 bg-white rounded-full p-2 md:p-[0.6rem] border shadow-md text-gray-700 hover:bg-gray-200 cursor-pointer'>
+        <ArrowRightIcon className='h-4 md:h-5' />
       </div>
     </div>
   );

@@ -52,7 +52,7 @@ function Header() {
         </div>
       </div>
 
-      <div className='flex items-center space-x-2 justify-end w-1/2 md:w-1/4'>
+      <div className='flex items-center space-x-2 justify-end w-1/2 md:w-1/4 mr-2 lg:mr-0'>
         <div className='hidden xl:flex items-center py-1 px-1 space-x-2 rounded-full hover:bg-gray-100 cursor-pointer'>
           <Image
             className='rounded-full cursor-pointer'

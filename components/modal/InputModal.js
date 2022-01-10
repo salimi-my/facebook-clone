@@ -151,7 +151,7 @@ export default function InputModal() {
                 </Dialog.Title>
                 <XIcon
                   onClick={() => setOpen(false)}
-                  className='icon absolute right-4'
+                  className='icon absolute right-4 top-2'
                 />
               </div>
               <div className='flex bg-white py-3 px-4 items-center space-x-2'>
