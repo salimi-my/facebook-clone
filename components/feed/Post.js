@@ -1,8 +1,69 @@
 import Image from 'next/image';
-import TimeAgo from 'react-timeago';
+import { useEffect, useState } from 'react';
+import AddComment from './AddComment';
+import Comment from './Comment';
+import Moment from 'react-moment';
+import {
+  collection,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  orderBy,
+  query,
+  setDoc
+} from 'firebase/firestore';
+import { db } from '../../firebase';
+import { useSession } from 'next-auth/react';
 
-function Post({ name, message, postImage, image, timestamp }) {
-  const postDate = new Date(timestamp?.toDate());
+function Post({ id, name, message, postImage, image, timestamp }) {
+  const { data: session } = useSession();
+  const [showComment, setShowComment] = useState(false);
+  const [comments, setComments] = useState([]);
+  const [likes, setLikes] = useState([]);
+  const [hasLiked, setHasLiked] = useState(false);
+
+  useEffect(
+    () =>
+      onSnapshot(
+        query(
+          collection(db, 'posts', id, 'comments'),
+          orderBy('timestamp', 'desc')
+        ),
+        (snapshot) => {
+          setComments(
+            snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+          );
+        }
+      ),
+    [id]
+  );
+
+  useEffect(
+    () =>
+      onSnapshot(collection(db, 'posts', id, 'likes'), (snapshot) =>
+        setLikes(snapshot.docs)
+      ),
+    [id]
+  );
+
+  useEffect(
+    () =>
+      setHasLiked(
+        likes.findIndex((like) => like.id === session.user.email) !== -1
+      ),
+    [likes, session]
+  );
+
+  const likePost = async () => {
+    if (hasLiked) {
+      await deleteDoc(doc(db, 'posts', id, 'likes', session.user.email));
+    } else {
+      await setDoc(doc(db, 'posts', id, 'likes', session.user.email), {
+        email: session.user.email
+      });
+    }
+  };
+
   return (
     <div className='flex flex-col'>
       <div className='p-5 bg-white mt-5 rounded-t-lg shadow-sm'>
@@ -19,7 +80,9 @@ function Post({ name, message, postImage, image, timestamp }) {
             <div className='flex items-center justify-start space-x-1'>
               {timestamp ? (
                 <p className='flex items-center text-xs text-gray-400'>
-                  <TimeAgo date={postDate} />
+                  <Moment fromNow ago>
+                    {timestamp?.toDate()}
+                  </Moment>
                 </p>
               ) : (
                 <p className='flex items-center text-xs text-gray-400'>
@@ -45,30 +108,84 @@ function Post({ name, message, postImage, image, timestamp }) {
         <p className='pt-4'>{message}</p>
       </div>
       {postImage && (
-        <div className='relative h-56 md:h-96 bg-white'>
+        <div className='relative h-56 md:h-96 bg-white border border-gray-300'>
           <Image src={postImage} objectFit='cover' layout='fill' alt='' />
         </div>
       )}
-      <div className='bg-white'>
-        <hr className='border-t border-gray-300 mt-3 mx-5' />
-      </div>
-      <div className='flex justify-between items-center rounded-b-lg bg-white shadow-md text-gray-500 p-1 px-5'>
-        <div className='inputIcon rounded-md'>
-          <i
-            style={{
-              backgroundImage: 'url("/icons-4.png")',
-              backgroundPosition: '0px -243px',
-              backgroundSize: 'auto',
-              width: '18px',
-              height: '18px',
-              backgroundRepeat: 'no-repeat',
-              display: 'inline-block',
-              opacity: 0.6
-            }}
-          ></i>
-          <p className='text-xs sm:text-base font-semibold'>Like</p>
+      {(likes.length > 0 || comments.length > 0) && (
+        <div className='flex items-center justify-between bg-white py-[0.6rem] px-5'>
+          {likes.length > 0 ? (
+            <div className='flex items-center space-x-2'>
+              <Image src='/like.svg' width={18} height={18} alt='' />
+              <p className='text-base text-gray-500'>{likes.length}</p>
+            </div>
+          ) : (
+            <div></div>
+          )}
+          {comments.length > 0 ? (
+            <div
+              onClick={() => setShowComment(true)}
+              className='flex items-center space-x-1 cursor-pointer hover:underline text-gray-500'
+            >
+              <p className='text-base'>{comments.length} Comments</p>
+            </div>
+          ) : (
+            <div></div>
+          )}
         </div>
-        <div className='inputIcon rounded-md'>
+      )}
+      {(likes.length > 0 || comments.length > 0) && (
+        <div className='bg-white'>
+          <hr className='border-t border-gray-300 mt-0 mx-5' />
+        </div>
+      )}
+      <div
+        className={`flex justify-between items-center bg-white text-gray-500 p-1 px-5 ${
+          !showComment && 'rounded-b-lg shadow-md'
+        }`}
+      >
+        <div onClick={likePost} className='inputIcon rounded-md'>
+          {hasLiked ? (
+            <i
+              style={{
+                backgroundImage: 'url("/icons-5.png")',
+                backgroundPosition: '0px -203px',
+                backgroundSize: 'auto',
+                width: '18px',
+                height: '18px',
+                backgroundRepeat: 'no-repeat',
+                display: 'inline-block',
+                opacity: 1,
+                filter:
+                  'invert(41%) sepia(100%) saturate(452%) hue-rotate(178deg) brightness(91%) contrast(98%)'
+              }}
+            ></i>
+          ) : (
+            <i
+              style={{
+                backgroundImage: 'url("/icons-5.png")',
+                backgroundPosition: '0px -222px',
+                backgroundSize: 'auto',
+                width: '18px',
+                height: '18px',
+                backgroundRepeat: 'no-repeat',
+                display: 'inline-block',
+                opacity: 0.6
+              }}
+            ></i>
+          )}
+          <p
+            className={`text-xs sm:text-base font-semibold ${
+              hasLiked && 'text-[#3578E5]'
+            }`}
+          >
+            Like
+          </p>
+        </div>
+        <div
+          onClick={() => setShowComment(true)}
+          className='inputIcon rounded-md'
+        >
           <i
             style={{
               backgroundImage: 'url("/icons-4.png")',
@@ -99,6 +216,32 @@ function Post({ name, message, postImage, image, timestamp }) {
           <p className='text-xs sm:text-base font-semibold'>Share</p>
         </div>
       </div>
+      {showComment && (
+        <div className='bg-white'>
+          <hr className='border-t border-gray-300 mt-0 mx-5' />
+        </div>
+      )}
+      {showComment && (
+        <div className='flex flex-col bg-white p-1 px-5 rounded-b-lg shadow-md'>
+          <div className='flex justify-end items-center py-1'>
+            <p className='text-sm text-gray-500 font-medium'>All comments</p>
+            <svg viewBox='0 0 20 20' className='h-[1.1rem] fill-gray-500'>
+              <path d='M10 14a1 1 0 0 1-.755-.349L5.329 9.182a1.367 1.367 0 0 1-.205-1.46A1.184 1.184 0 0 1 6.2 7h7.6a1.18 1.18 0 0 1 1.074.721 1.357 1.357 0 0 1-.2 1.457l-3.918 4.473A1 1 0 0 1 10 14z' />
+            </svg>
+          </div>
+          {comments.length > 0 &&
+            comments.map((comment) => (
+              <Comment
+                key={comment.id}
+                image={comment.image}
+                name={comment.name}
+                comment={comment.comment}
+                timestamp={comment.timestamp}
+              />
+            ))}
+          <AddComment id={id} />
+        </div>
+      )}
     </div>
   );
 }

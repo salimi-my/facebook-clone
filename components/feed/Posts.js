@@ -25,6 +25,7 @@ function Posts({ posts }) {
         ? realtimePost.map((post) => (
             <Post
               key={post.id}
+              id={post.id}
               name={post.name}
               message={post.message}
               email={post.email}
@@ -36,6 +37,7 @@ function Posts({ posts }) {
         : posts.map((post) => (
             <Post
               key={post.id}
+              id={post.id}
               name={post.name}
               message={post.message}
               email={post.email}

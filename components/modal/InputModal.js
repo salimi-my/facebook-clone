@@ -74,6 +74,7 @@ export default function InputModal() {
 
     setPosting(false);
     setOpen(false);
+    setEnableButton(false);
     inputRef.current.value = '';
   };
 
