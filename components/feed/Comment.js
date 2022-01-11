@@ -12,7 +12,7 @@ function Comment({ image, name, comment, timestamp }) {
         alt=''
       />
       <div className='inline-flex flex-col'>
-        <div className='inline-flex flex-col bg-gray-100 p-3 rounded-2xl'>
+        <div className='inline-flex flex-col bg-gray-100 p-3 py-2 rounded-2xl'>
           <p className='text-sm font-medium leading-4'>{name}</p>
           <p className='text-md leading-4'>{comment}</p>
         </div>
