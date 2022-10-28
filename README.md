@@ -26,7 +26,7 @@ yarn start
 
 
 ## Demo
-The app hosted on Vercel. [Click here](https://fakebook-salimi.my) to visit.
+The app hosted on Vercel. [Click here](https://fakebook.salimi.my) to visit.
 <br>
 Direct link: `https://fakebook.salimi.my`
 
