@@ -49,3 +49,7 @@ Direct link: `https://fakebook.salimi.my`
 #### Menu
 
 ![Menu](/screenshots/screenshot-3.png)
+
+#### Create post
+
+![Menu](/screenshots/screenshot-4.png)
