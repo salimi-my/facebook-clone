@@ -43,7 +43,6 @@ export default function Home({ posts }) {
           content='This is NOT REAL FACEBOOK! This site created for educational purposes only.'
         />
         <meta property='twitter:image' content='/fakebook.jpg' />
-        <meta name='robots' content='noindex, nofollow' />
         <link rel='shortcut icon' href='/favicon.ico' />
       </Head>
       <Header />
