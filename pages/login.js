@@ -34,6 +34,7 @@ function Login({ providers }) {
         />
         <meta property='twitter:image' content='/fakebook.jpg' />
         <link rel='shortcut icon' href='/favicon.ico' />
+        <meta name='robots' content='index, follow' />
       </Head>
       <div>
         <div>

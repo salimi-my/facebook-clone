@@ -44,6 +44,7 @@ export default function Home({ posts }) {
         />
         <meta property='twitter:image' content='/fakebook.jpg' />
         <link rel='shortcut icon' href='/favicon.ico' />
+        <meta name='robots' content='index, follow' />
       </Head>
       <Header />
       <LeftSidebar />
