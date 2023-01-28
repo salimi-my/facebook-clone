@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
 function PrivacyPolicy() {
   return (
@@ -39,9 +40,11 @@ function PrivacyPolicy() {
       </Head>
       <div className='max-w-5xl container m-auto relative'>
         <div className='w-full'>
-          <a href='/' className='underline hover:opacity-50'>
-            <p className='pt-12'>{'<'} Back</p>
-          </a>
+          <Link href='/'>
+            <p className='hover:opacity-50 pt-12 cursor-pointer'>
+              {'<'} <span className='underline'>Back</span>
+            </p>
+          </Link>
           <h1 className='mb-4 text-[40px] leading-[60px] font-bold mt-12'>
             Privacy Policy
           </h1>

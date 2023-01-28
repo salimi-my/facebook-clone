@@ -1,5 +1,6 @@
 import { getProviders, signIn } from 'next-auth/react';
 import Head from 'next/head';
+import Link from 'next/link';
 import { useState } from 'react';
 import DisclaimerModal from '../components/modal/DisclaimerModal';
 
@@ -152,12 +153,11 @@ function Login({ providers }) {
             reliance on any information provided on the site. Your use of the
             site and your reliance on any information on the site is solely at
             your own risk.{' '}
-            <a
-              href='/privacy-policy'
-              className='text-sm text-gray-500 underline hover:opacity-50'
-            >
-              Privacy Policy
-            </a>
+            <Link href='/privacy-policy'>
+              <span className='text-sm text-gray-500 underline hover:opacity-50 cursor-pointer'>
+                Privacy Policy
+              </span>
+            </Link>
           </p>
           <div className='mt-2 flex flex-col items-center'>
             <div className='sm:w-full text-start py-6'>
