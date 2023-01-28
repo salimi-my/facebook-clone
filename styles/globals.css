@@ -15,3 +15,15 @@
     @apply flex items-center space-x-1 hover:bg-gray-100 flex-grow justify-center p-1 rounded-lg cursor-pointer;
   }
 }
+
+@layer base {
+  ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+  }
+}

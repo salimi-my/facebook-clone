@@ -151,12 +151,24 @@ function Login({ providers }) {
             damage of any kind incurred as a result of the use of the site or
             reliance on any information provided on the site. Your use of the
             site and your reliance on any information on the site is solely at
-            your own risk.
+            your own risk.{' '}
+            <a
+              href='/privacy-policy'
+              className='text-sm text-gray-500 underline hover:opacity-50'
+            >
+              Privacy Policy
+            </a>
           </p>
           <div className='mt-2 flex flex-col items-center'>
             <div className='sm:w-full text-start py-6'>
               <p className='text-xs text-gray-500 mb-2'>
-                Facebook Clone © 2022 Created by Mohamad Salimi
+                Facebook Clone © 2022 Created by{' '}
+                <a
+                  href='https://www.salimi.my'
+                  className='underline hover:opacity-50'
+                >
+                  Salimi
+                </a>
               </p>
             </div>
           </div>
