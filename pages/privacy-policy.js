@@ -160,7 +160,7 @@ function PrivacyPolicy() {
                 <strong>Website</strong> refers to Fakebook, accessible from{' '}
                 <a
                   href='https://fakebook.salimi.my'
-                  rel='external nofollow noopener'
+                  rel='noreferrer'
                   target='_blank'
                 >
                   https://fakebook.salimi.my
